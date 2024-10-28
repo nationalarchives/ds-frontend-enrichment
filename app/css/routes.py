@@ -2,7 +2,7 @@ import calendar
 from datetime import datetime
 
 from app.css import bp
-from app.lib import cache
+from app.lib.cache import cache
 from flask import make_response, render_template
 
 
