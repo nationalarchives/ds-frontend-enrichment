@@ -9,7 +9,7 @@ from jinja2 import ChoiceLoader, PackageLoader
 
 
 def create_app(config_class):
-    app = Flask(__name__, static_url_path="/static")
+    app = Flask(__name__, static_url_path="/enrichment/static")
     app.config.from_object(config_class)
 
     gunicorn_error_logger = logging.getLogger("gunicorn.error")
@@ -96,7 +96,8 @@ def create_app(config_class):
         response.headers["X-Permitted-Cross-Domain-Policies"] = "none"
         response.headers["Cross-Origin-Embedder-Policy"] = "unsafe-none"
         response.headers["Cross-Origin-Opener-Policy"] = "same-origin"
-        response.headers["Cross-Origin-Resource-Policy"] = "same-origin"
+        response.headers["Cross-Origin-Resource-Policy"] = "unsafe-none"
+        response.headers["Access-Control-Allow-Origin"] = "*"
         return response
 
     app.jinja_env.trim_blocks = True
@@ -125,10 +126,12 @@ def create_app(config_class):
             feature={},
         )
 
+    from .css import bp as css_bp
     from .healthcheck import bp as healthcheck_bp
     from .main import bp as site_bp
 
     app.register_blueprint(site_bp)
+    app.register_blueprint(css_bp, url_prefix="/enrichment/css")
     app.register_blueprint(healthcheck_bp, url_prefix="/healthcheck")
 
     return app

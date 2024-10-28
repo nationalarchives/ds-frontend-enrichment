@@ -1,0 +1,30 @@
+.tna-logo--adornable {
+  position: relative;
+
+  .svg {
+    position: relative;
+    z-index: 3;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+
+    width: 49%;
+    height: 32.3%;
+
+    overflow: hidden;
+
+    position: absolute;
+    top: 1%;
+    right: 1%;
+  }
+
+  &::before {
+    z-index: 1;
+  }
+
+  &::after {
+    z-index: 2;
+  }
+}

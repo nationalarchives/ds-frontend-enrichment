@@ -1,6 +1,5 @@
 {%- extends 'layouts/base.html' -%}
 
-{%- from 'components/cookie-banner/macro.html' import tnaCookieBanner -%}
 {%- from 'components/footer/macro.html' import tnaFooter -%}
 {%- from 'components/header/macro.html' import tnaHeader -%}
 
@@ -45,16 +44,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.css', v=app_config.BUILD_VERSION) }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400..700&family=Roboto+Mono:wght@400..500&display=swap" media="screen,print">
     <link rel="stylesheet" href="{{ url_for('static', filename='ie.css', v=app_config.BUILD_VERSION) }}" media="all and (-ms-high-contrast: none), (-ms-high-contrast: active)">
-{% endblock %}
-
-{% block cookies %}
-{% if 'cookie_preferences_set' not in request.cookies or not request.cookies.get('cookie_preferences_set') %}
-{{ tnaCookieBanner({
-  'serviceName': 'The National Archives',
-  'cookiesUrl': url_for('main.cookies'),
-  'cookiesDomain': app_config.COOKIE_DOMAIN
-}) | indent(6) }}
-{% endif %}
 {% endblock %}
 
 {% block header %}
