@@ -11,6 +11,7 @@ These adornments can be included on any service that uses the components from TN
   rel="stylesheet"
   href="https://tna.dblclk.dev/enrichment/css/logo-adornments.css"
   media="screen"
+  crossorigin="anonymous"
 />
 ```
 
