@@ -15,7 +15,9 @@ These adornments can be included on any service that uses the components from TN
 />
 ```
 
-A date parameter can be added which changes nothing about the output but acts as a cache buster as each adornment is applied on a day-by-day basis. This should be dynamically set by your service.
+Each adornment is applied on a day-by-day basis.
+
+The CSS is cached for an hour but a date parameter can be added to the request which changes nothing about the response but acts as a cache buster. This should be dynamically set by your service.
 
 ```
 https://tna.dblclk.dev/enrichment/css/logo-adornments.css?date=2024-09-24
