@@ -17,8 +17,8 @@ def occasion():
     ][1].day
     if month == 11 and day >= 2 and (day <= max(11, second_sunday_in_november)):
         return "remembrance"
-    elif month == 1 and day == 1:
-        return "new-year"
+    elif (day == 1 and month == 1) or (day == 5 and month == 11):
+        return "fireworks"
     elif month == 2:
         return "progress"
     elif month == 6:
