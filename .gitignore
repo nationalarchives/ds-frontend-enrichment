@@ -3,9 +3,7 @@ __pycache__
 .pytest_cache
 /node_modules
 /app/static/assets
-/app/static/*.css
-/app/static/*.css.map
-/app/static/logo-adornments/*.css
-/app/static/logo-adornments/*.css.map
-/app/static/*.min.js
-/app/static/*.min.js.map
+/app/static/**/*.css
+/app/static/**/*.css.map
+/app/static/**/*.min.js
+/app/static/**/*.min.js.map

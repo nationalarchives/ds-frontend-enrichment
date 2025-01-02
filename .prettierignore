@@ -1,2 +1,3 @@
 **/*.html
 app/templates/css/logo-adornments.css
+app/templates/js/logo-adornments.js
