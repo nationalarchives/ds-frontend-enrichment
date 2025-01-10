@@ -161,21 +161,21 @@ files = [
 
 [[package]]
 name = "flask"
-version = "2.3.3"
+version = "3.1.0"
 description = "A simple framework for building complex web applications."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 files = [
-    {file = "flask-2.3.3-py3-none-any.whl", hash = "sha256:f69fcd559dc907ed196ab9df0e48471709175e696d6e698dd4dbe940f96ce66b"},
-    {file = "flask-2.3.3.tar.gz", hash = "sha256:09c347a92aa7ff4a8e7f3206795f30d826654baf38b873d0744cd571ca609efc"},
+    {file = "flask-3.1.0-py3-none-any.whl", hash = "sha256:d667207822eb83f1c4b50949b1623c8fc8d51f2341d65f72e1a1815397551136"},
+    {file = "flask-3.1.0.tar.gz", hash = "sha256:5f873c5184c897c8d9d1b05df1e3d01b14910ce69607a117bd3277098a5836ac"},
 ]
 
 [package.dependencies]
-blinker = ">=1.6.2"
+blinker = ">=1.9"
 click = ">=8.1.3"
-itsdangerous = ">=2.1.2"
+itsdangerous = ">=2.2"
 Jinja2 = ">=3.1.2"
-Werkzeug = ">=2.3.7"
+Werkzeug = ">=3.1"
 
 [package.extras]
 async = ["asgiref (>=3.2)"]
@@ -416,13 +416,13 @@ fixture = ["fixtures"]
 
 [[package]]
 name = "tna-frontend-jinja"
-version = "0.2.11"
+version = "0.6.0"
 description = "TNA Frontend Jinja templates"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "tna_frontend_jinja-0.2.11-py3-none-any.whl", hash = "sha256:f07fbca3ac1c908d873c4f189c16850adc21e471394e656da89aaf3000db05f4"},
-    {file = "tna_frontend_jinja-0.2.11.tar.gz", hash = "sha256:d7a7a75f0d652092737c45e3e972c9ceb81b00924290315da2716d43698b8125"},
+    {file = "tna_frontend_jinja-0.6.0-py3-none-any.whl", hash = "sha256:8766ae98aba99d06a29eb823f75be6476707967180362c4e5a3d89d077b27e3c"},
+    {file = "tna_frontend_jinja-0.6.0.tar.gz", hash = "sha256:8957643d53f58f6acbd3f27f8237a4a6d044d3e45ec32dc51b7b5ddfabe80b95"},
 ]
 
 [package.dependencies]
@@ -465,4 +465,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "1359cdb256231e39d2720dc4df4f6d5a0c3b63f7b1e54eec78522d6aefc8a379"
+content-hash = "45b73c89ad442c1b75c5cf23f9a202417f9de860e9a07a11217c8b24097ad3ed"
