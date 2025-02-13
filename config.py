@@ -73,7 +73,7 @@ class Base(object):
 
     CACHE_TYPE: str = "FileSystemCache"
     CACHE_DEFAULT_TIMEOUT: int = int(
-        os.environ.get("CACHE_DEFAULT_TIMEOUT", "1")
+        os.environ.get("CACHE_DEFAULT_TIMEOUT", "3600")
     )
     CACHE_IGNORE_ERRORS: bool = True
     CACHE_DIR: str = os.environ.get("CACHE_DIR", "/tmp")
@@ -82,7 +82,7 @@ class Base(object):
 
 
 class Production(Base, Features):
-    CACHE_DEFAULT_TIMEOUT = int(os.environ.get("CACHE_DEFAULT_TIMEOUT", "300"))
+    pass
 
 
 class Staging(Base, Features):
@@ -92,7 +92,7 @@ class Staging(Base, Features):
 class Develop(Base, Features):
     DEBUG = strtobool(os.getenv("DEBUG", "True"))
 
-    FORCE_HTTPS = strtobool(os.getenv("FORCE_HTTPS", "False"))
+    CACHE_DEFAULT_TIMEOUT = 1
 
 
 class Test(Base, Features):
