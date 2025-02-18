@@ -1,5 +1,5 @@
 /* Generated {{ now_iso_8601() }} */
-{% if logo_adornment %}
+{% if logo_adornment and path_exists('app/static/logo-adornments/' + logo_adornment + '.css') %}
 @import "{{ url_for('static', filename='logo-adornments/' + logo_adornment + '.css') }}";
 {% else %}
 /* No logo adornments available */

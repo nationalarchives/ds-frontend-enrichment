@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 from urllib.parse import unquote
 
@@ -17,3 +18,7 @@ def cookie_preference(policy):
         preferences = json.loads(unquote(cookies_policy))
         return preferences[policy] if policy in preferences else None
     return None
+
+
+def path_exists(path):
+    return os.path.exists(path)
