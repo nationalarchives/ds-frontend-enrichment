@@ -5,7 +5,7 @@ from flask import make_response, render_template
 
 
 @bp.route("/logo-adornments.js")
-@cache.cached(timeout=3600)  # 1 hour
+@cache.cached()
 def logo_adornments_js():
     logo_adornment = occasion()
     js = render_template(

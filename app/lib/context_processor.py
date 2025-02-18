@@ -20,5 +20,5 @@ def cookie_preference(policy):
     return None
 
 
-def path_exists(path):
-    return os.path.exists(path)
+def static_file_exists(path):
+    return os.path.exists(f"app/static/{path}")

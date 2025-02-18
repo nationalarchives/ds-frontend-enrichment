@@ -4,7 +4,7 @@ from app.lib.cache import cache
 from app.lib.context_processor import (
     cookie_preference,
     now_iso_8601,
-    path_exists,
+    static_file_exists,
 )
 from app.lib.template_filters import slugify
 from flask import Flask
@@ -120,7 +120,7 @@ def create_app(config_class):
         return dict(
             cookie_preference=cookie_preference,
             now_iso_8601=now_iso_8601,
-            path_exists=path_exists,
+            static_file_exists=static_file_exists,
             app_config={
                 "ENVIRONMENT": app.config.get("ENVIRONMENT"),
                 "TNA_FRONTEND_VERSION": app.config.get("TNA_FRONTEND_VERSION"),
