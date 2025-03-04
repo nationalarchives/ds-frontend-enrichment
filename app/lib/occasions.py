@@ -25,7 +25,7 @@ def occasion():
         return "pride"
     elif month == 10:
         return "black-history"
-    elif day == 15 and month == 3 and year == 2025:
+    elif day == 21 and month == 3 and year == 2025:
         return "comic-relief"
     elif day == 22 and month == 4 and year == 2025:
         return "earth-day"
