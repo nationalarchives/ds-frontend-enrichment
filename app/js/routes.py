@@ -1,13 +1,18 @@
+from datetime import datetime
+
 from app.js import bp
 from app.lib.cache import cache
 from app.lib.occasions import occasion
-from flask import make_response, render_template
+from flask import make_response, render_template, request
 
 
 @bp.route("/logo-adornments.js")
 @cache.cached()
 def logo_adornments_js():
-    logo_adornment = occasion()
+    date = request.args.get("debug", None)
+    if date:
+        date = datetime.strptime(date, "%Y-%m-%d")
+    logo_adornment = occasion(date)
     js = render_template(
         "js/logo-adornments.js",
         logo_adornment=logo_adornment,
