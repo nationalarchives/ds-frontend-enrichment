@@ -104,7 +104,7 @@ def create_app(config_class):
         if "Cross-Origin-Opener-Policy" not in response.headers:
             response.headers["Cross-Origin-Opener-Policy"] = "same-origin"
         if "Cross-Origin-Resource-Policy" not in response.headers:
-            response.headers["Cross-Origin-Resource-Policy"] = "same-origin"
+            response.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
         if "Access-Control-Allow-Origin" not in response.headers:
             response.headers["Access-Control-Allow-Origin"] = "*"
         return response
