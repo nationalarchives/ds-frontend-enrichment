@@ -21,7 +21,11 @@ These adornments can be included on any service that uses the components from TN
 Similarly to the CSS entrypoint, there a single dynamic JavaScript file that will import the relevant script. Add this right at the bottom of your page, just before the closing `</body>` tag.
 
 ```html
-<script type="module" src="https://www.nationalarchives.gov.uk/enrichment/js/logo-adornments.js" defer></script>
+<script
+  type="module"
+  src="https://www.nationalarchives.gov.uk/enrichment/js/logo-adornments.js"
+  defer
+></script>
 ```
 
 ## Cache busting
