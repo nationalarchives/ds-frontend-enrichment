@@ -92,7 +92,7 @@ class Staging(Base, Features):
 class Develop(Base, Features):
     DEBUG = strtobool(os.getenv("DEBUG", "True"))
 
-    CACHE_DEFAULT_TIMEOUT = int(os.environ.get("CACHE_DEFAULT_TIMEOUT", "1"))
+    CACHE_DEFAULT_TIMEOUT = int(os.environ.get("CACHE_DEFAULT_TIMEOUT", "100"))
 
 
 class Test(Base, Features):
