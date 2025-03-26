@@ -34,8 +34,11 @@ In addition to the [base Docker image variables](https://github.com/nationalarch
 
 | Variable                         | Purpose                                                                     | Default                                                    |
 | -------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `ENVIRONMENT_NAME`               | The name of the environment (for reporting purposes)                        | `production`                                               |
 | `CONFIG`                         | The configuration to use                                                    | `config.Production`                                        |
 | `DEBUG`                          | If true, allow debugging[^1]                                                | `False`                                                    |
+| `SENTRY_DSN`                     | The Sentry DSN (project code)                                               | _none_                                                     |
+| `SENTRY_SAMPLE_RATE`             | How often to sample traces and profiles (0-1.0)                             | production: `0.1`, staging: `1`, develop: `0`              |
 | `COOKIE_DOMAIN`                  | The domain to save cookie preferences against                               | _none_                                                     |
 | `CSP_IMG_SRC`                    | A comma separated list of CSP rules for `img-src`                           | `'self'`                                                   |
 | `CSP_SCRIPT_SRC`                 | A comma separated list of CSP rules for `script-src`                        | `'self'`                                                   |
