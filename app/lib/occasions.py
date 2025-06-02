@@ -16,7 +16,7 @@ def occasion(date=None):
         for day in week
         if day.weekday() == calendar.SUNDAY and day.month == 11
     ][1].day
-    if (day == 1 and month == 1) or (day == 5 and month == 11):
+    if day == 1 and month == 1:
         return "fireworks"
     elif (
         month == 11 and day >= 2 and (day <= max(11, second_sunday_in_november))
