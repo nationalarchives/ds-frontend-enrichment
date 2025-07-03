@@ -22,8 +22,8 @@ def occasion(date=None):
         month == 11 and day >= 2 and (day <= max(11, second_sunday_in_november))
     ):
         return "remembrance"
-    elif month == 2:
-        return "progress"
+    # elif month == 2:
+    #     return "progress"
     elif month == 6:
         return "pride"
     elif month == 10:
