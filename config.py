@@ -4,11 +4,11 @@ import os
 from app.lib.util import strtobool
 
 
-class Features(object):
+class Features:
     pass
 
 
-class Base(object):
+class Production(Features):
     ENVIRONMENT_NAME: str = os.environ.get("ENVIRONMENT_NAME", "production")
 
     CONTAINER_IMAGE: str = os.environ.get("CONTAINER_IMAGE", "")
@@ -85,17 +85,13 @@ class Base(object):
     GA4_ID = os.environ.get("GA4_ID", "")
 
 
-class Production(Base, Features):
-    pass
-
-
-class Staging(Base, Features):
+class Staging(Production):
     SENTRY_SAMPLE_RATE = float(os.getenv("SENTRY_SAMPLE_RATE", "1"))
 
     CACHE_DEFAULT_TIMEOUT = int(os.environ.get("CACHE_DEFAULT_TIMEOUT", "60"))
 
 
-class Develop(Base, Features):
+class Develop(Production):
     DEBUG = strtobool(os.getenv("DEBUG", "True"))
 
     SENTRY_SAMPLE_RATE = float(os.getenv("SENTRY_SAMPLE_RATE", "0"))
@@ -103,7 +99,7 @@ class Develop(Base, Features):
     CACHE_DEFAULT_TIMEOUT = int(os.environ.get("CACHE_DEFAULT_TIMEOUT", "1"))
 
 
-class Test(Base, Features):
+class Test(Production):
     ENVIRONMENT_NAME = "test"
 
     DEBUG = True
