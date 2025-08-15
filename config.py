@@ -11,6 +11,7 @@ class Features(object):
 class Base(object):
     ENVIRONMENT_NAME: str = os.environ.get("ENVIRONMENT_NAME", "production")
 
+    CONTAINER_IMAGE: str = os.environ.get("CONTAINER_IMAGE", "")
     BUILD_VERSION: str = os.environ.get("BUILD_VERSION", "")
     TNA_FRONTEND_VERSION: str = ""
     try:
