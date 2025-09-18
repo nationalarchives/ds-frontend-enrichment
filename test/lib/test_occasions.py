@@ -18,6 +18,7 @@ class MainBlueprintTestCase(unittest.TestCase):
         self.assertEqual(occasion(datetime.datetime(2025, 11, 15)), "")
         # self.assertEqual(occasion(datetime.datetime(2025, 2, 1)), "progress")
         # self.assertEqual(occasion(datetime.datetime(2025, 2, 28)), "progress")
+        self.assertEqual(occasion(datetime.datetime(2025, 2, 14)), "valentines")
         self.assertEqual(occasion(datetime.datetime(2025, 6, 1)), "pride")
         self.assertEqual(occasion(datetime.datetime(2025, 6, 30)), "pride")
         self.assertEqual(

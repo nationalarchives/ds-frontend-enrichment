@@ -24,6 +24,8 @@ def occasion(date=None):
         return "remembrance"
     # elif month == 2:
     #     return "progress"
+    elif day == 14 and month == 2:
+        return "valentines"
     elif month == 6:
         return "pride"
     elif month == 10:

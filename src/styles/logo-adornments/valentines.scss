@@ -1,0 +1,26 @@
+@use "common";
+
+@use "@nationalarchives/frontend/nationalarchives/tools/media";
+
+.tna-logo--adornable {
+  &::after {
+    content: "❤️";
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+
+    z-index: 1;
+
+    font-size: 3rem;
+
+    @include media.on-small {
+      font-size: 1.75rem;
+    }
+
+    @include media.on-tiny {
+      font-size: 1.5rem;
+    }
+  }
+}
