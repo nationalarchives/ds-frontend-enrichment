@@ -30,6 +30,6 @@ def occasion(date=None):
         return "pride"
     elif month == 10:
         return "black-history"
-    elif day == 21 and month == 3 and year == 2025:
+    elif day == 20 and month == 3 and year == 2026:
         return "comic-relief"
     return ""
