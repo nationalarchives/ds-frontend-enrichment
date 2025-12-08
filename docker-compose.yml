@@ -7,6 +7,7 @@ services:
         IMAGE_TAG: latest
     environment:
       - CONFIG=config.Develop
+      - ALLOW_INSECURE=true
       - SECRET_KEY=abc123
       - NPM_DEVELOP_COMMAND=dev
       - COOKIE_DOMAIN=localhost
