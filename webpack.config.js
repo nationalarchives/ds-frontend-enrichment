@@ -6,7 +6,7 @@ const dynamicEntries = glob
   .reduce(
     (x, y) =>
       Object.assign(x, {
-        [y.replace(/\.js$/, "").split("/").slice(-2).join("/")]: y,
+        [y.replace(/\.js$/, "").split("/").slice(-2).join("/")]: `./${y}`,
       }),
     {},
   );
