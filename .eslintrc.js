@@ -21,8 +21,9 @@ module.exports = {
   },
   rules: {},
   ignorePatterns: [
-    "webpack.config.js",
-    "*.min.js",
+    "node_modules",
+    "**/*.config.js",
+    "**/*.min.js",
     "app/templates/js/logo-adornments.js",
   ],
 };
