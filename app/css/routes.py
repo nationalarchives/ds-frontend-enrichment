@@ -14,7 +14,7 @@ def logo_adornments_css():
         date = datetime.strptime(date, "%Y-%m-%d")
     logo_adornment = occasion(date)
     css = render_template(
-        "css/logo-adornments.css",
+        "css/logo-adornments.css.jinja",
         logo_adornment=logo_adornment,
     )
     response = make_response(css)

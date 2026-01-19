@@ -14,7 +14,7 @@ def logo_adornments_js():
         date = datetime.strptime(date, "%Y-%m-%d")
     logo_adornment = occasion(date)
     js = render_template(
-        "js/logo-adornments.js",
+        "js/logo-adornments.js.jinja",
         logo_adornment=logo_adornment,
         logo_adornment_description=ADORNMENT_DESCRIPTIONS.get(
             logo_adornment, ""
