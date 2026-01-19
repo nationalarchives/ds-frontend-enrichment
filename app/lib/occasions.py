@@ -1,6 +1,15 @@
 import calendar
 from datetime import datetime
 
+ADORNMENT_DESCRIPTIONS = {
+    "fireworks": "Happy New Year!",
+    "valentines": "Happy Valentine's Day",
+    "pride": "Celebrating Pride Month",
+    "black-history": "Celebrating Black History Month",
+    "comic-relief": "Celebrating Comic Relief",
+    "earth-day": "Celebrating Earth Day",
+}
+
 
 def occasion(date=None):
     if not isinstance(date, datetime):
@@ -26,10 +35,12 @@ def occasion(date=None):
     #     return "progress"
     elif day == 14 and month == 2:
         return "valentines"
+    elif day == 20 and month == 3 and year == 2026:
+        return "comic-relief"
+    elif day == 22 and month == 4:
+        return "earth-day"
     elif month == 6:
         return "pride"
     elif month == 10:
         return "black-history"
-    elif day == 20 and month == 3 and year == 2026:
-        return "comic-relief"
     return ""

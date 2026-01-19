@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app.js import bp
 from app.lib.cache import cache, cache_key_prefix
-from app.lib.occasions import occasion
+from app.lib.occasions import ADORNMENT_DESCRIPTIONS, occasion
 from flask import make_response, render_template, request
 
 
@@ -16,6 +16,9 @@ def logo_adornments_js():
     js = render_template(
         "js/logo-adornments.js",
         logo_adornment=logo_adornment,
+        logo_adornment_description=ADORNMENT_DESCRIPTIONS.get(
+            logo_adornment, ""
+        ),
     )
     response = make_response(js)
     response.headers["Content-Type"] = "text/javascript; charset=UTF-8"

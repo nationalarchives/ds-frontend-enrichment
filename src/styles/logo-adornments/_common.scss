@@ -1,3 +1,5 @@
+@use "@nationalarchives/frontend/nationalarchives/tools/media";
+
 .tna-logo--adornable {
   position: relative;
   z-index: 1;
@@ -22,5 +24,35 @@
 
   &::after {
     z-index: -1;
+  }
+}
+
+@mixin emoji-adornment($emoji) {
+  .tna-logo--adornable {
+    &::after {
+      content: $emoji;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+
+      z-index: 1;
+
+      font-size: 3rem;
+      text-shadow: 3px 3px 3px rgb(0 0 0 / 25%);
+
+      .tna-header & {
+        font-size: 2.25rem;
+      }
+
+      @include media.on-small {
+        font-size: 1.75rem !important;
+      }
+
+      @include media.on-tiny {
+        font-size: 1.5rem !important;
+      }
+    }
   }
 }
