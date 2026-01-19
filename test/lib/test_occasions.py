@@ -31,3 +31,7 @@ class MainBlueprintTestCase(unittest.TestCase):
         self.assertEqual(
             occasion(datetime.datetime(2026, 3, 20)), "comic-relief"
         )
+        self.assertEqual(occasion(datetime.datetime(2026, 11, 31)), "halloween")
+        # self.assertEqual(
+        #     occasion(datetime.datetime(2026, 12, 1)), "christmas"
+        # )

@@ -8,6 +8,8 @@ ADORNMENT_DESCRIPTIONS = {
     "black-history": "Celebrating Black History Month",
     "comic-relief": "Celebrating Comic Relief",
     "earth-day": "Celebrating Earth Day",
+    "halloween": "Happy Halloween!",
+    "christmas": "Merry Christmas!",
 }
 
 
@@ -43,4 +45,8 @@ def occasion(date=None):
         return "pride"
     elif month == 10:
         return "black-history"
+    elif day == 31 and month == 11:
+        return "halloween"
+    # elif month == 12:
+    #     return "christmas"
     return ""
