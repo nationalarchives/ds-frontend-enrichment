@@ -26,12 +26,12 @@ class MainBlueprintTestCase(unittest.TestCase):
             occasion(datetime.datetime(2025, 10, 1)), "black-history"
         )
         self.assertEqual(
-            occasion(datetime.datetime(2025, 10, 31)), "black-history"
+            occasion(datetime.datetime(2025, 10, 30)), "black-history"
         )
+        self.assertEqual(occasion(datetime.datetime(2026, 10, 31)), "halloween")
         self.assertEqual(
             occasion(datetime.datetime(2026, 3, 20)), "comic-relief"
         )
-        self.assertEqual(occasion(datetime.datetime(2026, 10, 31)), "halloween")
         # self.assertEqual(
         #     occasion(datetime.datetime(2026, 12, 1)), "christmas"
         # )
