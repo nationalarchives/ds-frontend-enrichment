@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from urllib.parse import unquote
 
-from flask import request
+from flask import current_app, request
 
 
 def now_iso_8601():
@@ -21,4 +21,4 @@ def cookie_preference(policy):
 
 
 def static_file_exists(path):
-    return os.path.exists(f"app/static/{path}")
+    return os.path.exists(os.path.join(str(current_app.static_folder), path))
