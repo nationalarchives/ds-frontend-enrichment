@@ -43,10 +43,10 @@ def occasion(date=None):
         return "earth-day"
     elif month == 6:
         return "pride"
+    elif day == 31 and month == 10:
+        return "halloween"
     elif month == 10:
         return "black-history"
-    elif day == 31 and month == 11:
-        return "halloween"
     # elif month == 12:
     #     return "christmas"
     return ""
