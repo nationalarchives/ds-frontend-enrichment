@@ -12,10 +12,11 @@ def logo_adornments_css():
     date = request.args.get("debug", None)
     if date:
         date = datetime.strptime(date, "%Y-%m-%d")
-    logo_adornment = occasion(date)
+    logo_adornment, logo_adornment_description = occasion(date)
     css = render_template(
         "css/logo-adornments.css.jinja",
         logo_adornment=logo_adornment,
+        logo_adornment_description=logo_adornment_description,
     )
     response = make_response(css)
     response.headers["Content-Type"] = "text/css; charset=UTF-8"
