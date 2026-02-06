@@ -16,21 +16,21 @@ def occasion(date=None):
         for day in week
         if day.weekday() == calendar.SUNDAY and day.month == 11
     ][1].day
-    if day == 1 and month == 1:
+    if month == 1 and day == 1:
         return ("fireworks", "Happy New Year")
-    elif day == 14 and month == 2:
+    elif month == 2 and day == 14:
         return ("valentines", "Happy Valentine's Day")
     # elif month == 2:
     #     return ("progress", "Celebrating Progress")
-    elif day == 5 and month == 3 and year == 2026:
+    elif month == 3 and day == 5 and year == 2026:
         return ("world-book-day", "Celebrating World Book Day")
-    elif day == 20 and month == 3 and year == 2026:
+    elif month == 3 and day == 20 and year == 2026:
         return ("comic-relief", "Celebrating Comic Relief")
-    elif day == 22 and month == 4:
+    elif month == 4 and day == 22:
         return ("earth-day", "Celebrating Earth Day")
     elif month == 6:
         return ("pride", "Celebrating Pride Month")
-    elif day == 31 and month == 10:
+    elif month == 10 and day == 31:
         return ("halloween", "Happy Halloween")
     elif month == 10:
         return ("black-history", "Celebrating Black History Month")
