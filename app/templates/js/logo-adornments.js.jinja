@@ -5,10 +5,9 @@ import "{{ url_for('static', filename='logo-adornments/' + logo_adornment + '.mi
 {% endif %}
 {% if logo_adornment_description %}
 document.querySelectorAll(".tna-logo--adornable").forEach(($logo) => {
-    const $logoWrapper = $logo.closest("a[href][title]");
-    const logoTitle = $logoWrapper.getAttribute("title") || "";
-    const logoTitleSuffix = "{{ logo_adornment_description }}";
-    $logoWrapper.setAttribute("title", logoTitle ? `${logoTitle} (${logoTitleSuffix})` : logoTitleSuffix);
+    const $logoWrapper = $logo.closest("a[href]") || $logo;
+    const logoTitle = $logoWrapper.getAttribute("title") || "The National Archives";
+    $logoWrapper.setAttribute("title", `${logoTitle} ({{ logo_adornment_description }})`);
 });
 {% endif %}
 {% else %}
