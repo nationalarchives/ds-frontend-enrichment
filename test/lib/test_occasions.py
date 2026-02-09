@@ -31,7 +31,7 @@ class MainBlueprintTestCase(unittest.TestCase):
         # self.assertEqual(occasion(get_date_to_test(1, 2)), ("progress", "Celebrating Progress"))
         self.assertEqual(
             occasion(get_date_to_test(14, 2)),
-            ("valentines", "Happy Valentine's Day"),
+            ("heart", "Happy Valentine's Day"),
         )
         # self.assertEqual(occasion(get_date_to_test(28, 2)), ("progress", "Celebrating Progress"))
 
@@ -39,6 +39,18 @@ class MainBlueprintTestCase(unittest.TestCase):
         self.assertEqual(
             occasion(get_date_to_test(5, 3)),
             ("world-book-day", "Celebrating World Book Day"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(8, 3)),
+            ("womens-day", "Celebrating International Women’s Day"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(16, 3)),
+            ("neurodiversity", "Neurodiversity Celebration Week"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(19, 3)),
+            ("neurodiversity", "Neurodiversity Celebration Week"),
         )
         self.assertEqual(
             occasion(get_date_to_test(20, 3)),
@@ -50,9 +62,20 @@ class MainBlueprintTestCase(unittest.TestCase):
             occasion(get_date_to_test(22, 4)),
             ("earth-day", "Celebrating Earth Day"),
         )
+        self.assertEqual(
+            occasion(get_date_to_test(27, 4)),
+            ("london-marathon", "The London Marathon"),
+        )
 
     def test_occasions_may(self):
-        pass
+        self.assertEqual(
+            occasion(get_date_to_test(12, 5)),
+            ("nurses", "Celebrating International Nurses Day"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(20, 5)),
+            ("bee", "Celebrating World Bee Day"),
+        )
 
     def test_occasions_june(self):
         self.assertEqual(
@@ -60,23 +83,56 @@ class MainBlueprintTestCase(unittest.TestCase):
             ("pride", "Celebrating Pride Month"),
         )
         self.assertEqual(
+            occasion(get_date_to_test(3, 6)),
+            ("bike", "Celebrating World Bicycle Day"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(5, 6)),
+            ("environment", "Celebrating World Environment Day"),
+        )
+        self.assertEqual(
             occasion(get_date_to_test(30, 6)),
             ("pride", "Celebrating Pride Month"),
         )
 
     def test_occasions_july(self):
-        pass
+        self.assertEqual(
+            occasion(get_date_to_test(2, 7)),
+            ("ufo", "Celebrating World UFO Day"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(20, 7)),
+            ("shark", "Celebrating Shark Week"),
+        )
+        self.assertEqual(
+            occasion(get_date_to_test(25, 7)),
+            ("shark", "Celebrating Shark Week"),
+        )
 
     def test_occasions_august(self):
-        pass
+        self.assertEqual(
+            occasion(get_date_to_test(19, 8)),
+            ("photography", "Celebrating World Photography Day"),
+        )
 
     def test_occasions_september(self):
-        pass
+        self.assertEqual(
+            occasion(get_date_to_test(29, 9)),
+            ("heart", "Celebrating World Heart Day"),
+        )
 
     def test_occasions_october(self):
         self.assertEqual(
             occasion(get_date_to_test(1, 10)),
             ("black-history", "Celebrating Black History Month"),
+        )
+        # self.assertEqual(
+        #     occasion(get_date_to_test(3, 10)),
+        #     ("carrot", "Celebrating British Carrot Day"),
+        # )
+        self.assertEqual(
+            occasion(get_date_to_test(4, 10)),
+            ("animal", "Celebrating World Animal Day"),
         )
         self.assertEqual(
             occasion(get_date_to_test(30, 10)),
