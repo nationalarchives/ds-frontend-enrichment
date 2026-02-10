@@ -9,6 +9,15 @@ def occasion(date=None):  # noqa: max-complexity
     month = date.month
     year = date.year
     cal = calendar.Calendar(firstweekday=calendar.MONDAY)
+
+    june_calendar = cal.monthdatescalendar(date.year, 6)
+    second_saturday_in_june = [
+        day
+        for week in june_calendar
+        for day in week
+        if day.weekday() == calendar.SATURDAY and day.month == 6
+    ][1].day
+
     november_calendar = cal.monthdatescalendar(date.year, 11)
     second_sunday_in_november = [
         day
@@ -16,6 +25,7 @@ def occasion(date=None):  # noqa: max-complexity
         for day in week
         if day.weekday() == calendar.SUNDAY and day.month == 11
     ][1].day
+
     if month == 1 and day == 1:
         return ("fireworks", "Happy New Year")
     elif month == 2 and day == 14:
@@ -42,6 +52,8 @@ def occasion(date=None):  # noqa: max-complexity
         return ("bike", "Celebrating World Bicycle Day")
     elif month == 6 and day == 5:
         return ("environment", "Celebrating World Environment Day")
+    elif month == 6 and day == second_saturday_in_june:
+        return ("trooping-colour", "Trooping the Colour")
     elif month == 6:
         return ("pride", "Celebrating Pride Month")
     elif month == 7 and day == 2:
