@@ -1,6 +1,6 @@
 /* Generated {{ now_iso_8601() }} by build version {{ app_config.BUILD_VERSION }} */
 {% if logo_adornment and static_file_exists('logo-adornments/' + logo_adornment + '.css') %}
-@import "{{ url_for('static', filename='logo-adornments/' + logo_adornment + '.css') }}";
+@import "{{ url_for('static', filename='logo-adornments/' + logo_adornment + '.css', _external=True) }}";
 {% else %}
 /* No logo adornments available */
 {% endif %}
