@@ -1,8 +1,10 @@
-# Logo adornments
+# Frontend enrichment
+
+## Logo adornments
 
 Adornments can be added to logos in both the [header](https://nationalarchives.github.io/design-system/components/header/) and [global header](https://nationalarchives.github.io/design-system/components/global-header/) components.
 
-## CSS
+### CSS
 
 There is a single entry file ([/enrichment/css/logo-adornments.css](http://localhost:65529/enrichment/css/logo-adornments.css)) that dynamically imports the relevant adornment based on the current date.
 
@@ -16,7 +18,7 @@ These adornments can be included on any service that uses the components from TN
 />
 ```
 
-## JavaScript
+### JavaScript
 
 Similar to the CSS entrypoint, there a single dynamic JavaScript file that will import the relevant script. Add this right at the bottom of your page, just before the closing `</body>` tag.
 
@@ -28,7 +30,7 @@ Similar to the CSS entrypoint, there a single dynamic JavaScript file that will 
 ></script>
 ```
 
-## Cache busting
+### Cache busting
 
 Each adornment is applied on a day-by-day basis.
 
@@ -38,7 +40,7 @@ The CSS is cached for an hour but a date parameter can be added to the request w
 https://www.nationalarchives.gov.uk/enrichment/css/logo-adornments.css?date=2024-09-24
 ```
 
-## Debug
+### Debug
 
 The CSS and JavaScript can be tested by adding a `debug` parameter with a date to check the adornment for that date.
 
