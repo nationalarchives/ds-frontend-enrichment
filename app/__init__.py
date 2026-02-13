@@ -11,7 +11,8 @@ from app.lib.template_filters import slugify
 from flask import Flask
 from flask_talisman import Talisman
 from jinja2 import ChoiceLoader, PackageLoader
-from werkzeug.middleware.proxy_fix import ProxyFix
+
+# from werkzeug.middleware.proxy_fix import ProxyFix
 
 
 def create_app(config_class):
@@ -111,13 +112,13 @@ def create_app(config_class):
         force_https=app.config["FORCE_HTTPS"],
     )
 
-    app.wsgi_app = ProxyFix(
-        app.wsgi_app,
-        x_for=app.config.get("REVERSE_PROXY_LEVELS", 1),
-        x_proto=app.config.get("REVERSE_PROXY_LEVELS", 1),
-        x_host=app.config.get("REVERSE_PROXY_LEVELS", 1),
-        x_prefix=app.config.get("REVERSE_PROXY_LEVELS", 1),
-    )
+    # app.wsgi_app = ProxyFix(
+    #     app.wsgi_app,
+    #     x_for=app.config.get("REVERSE_PROXY_LEVELS", 1),
+    #     x_proto=app.config.get("REVERSE_PROXY_LEVELS", 1),
+    #     x_host=app.config.get("REVERSE_PROXY_LEVELS", 1),
+    #     x_prefix=app.config.get("REVERSE_PROXY_LEVELS", 1),
+    # )
 
     @app.after_request
     def apply_extra_headers(response):
