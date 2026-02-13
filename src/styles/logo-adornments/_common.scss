@@ -31,10 +31,10 @@
 @mixin emoji-adornment($emoji) {
   .tna-logo--adornable {
     &::after {
-      content: $emoji;
+      content: $emoji / "";
 
       display: flex;
-      align-items: baseline;
+      align-items: flex-end;
       justify-content: center;
       overflow: visible;
 
@@ -42,8 +42,7 @@
 
       font-size: 2.25rem;
       line-height: 1;
-      line-height: 1cap;
-      text-shadow: 0.05em 0.05em 0.05em rgb(0 0 0 / 25%);
+      text-shadow: 0 0.05em 0.1em rgb(0 0 0 / 50%);
 
       @include media.on-small {
         font-size: 1.75rem;
@@ -53,8 +52,8 @@
         font-size: 10.5rem;
       }
 
-      @supports (font-size: 42cqw) {
-        font-size: 42cqw !important;
+      @supports (font-size: 40cqw) {
+        font-size: 40cqw !important;
       }
     }
   }

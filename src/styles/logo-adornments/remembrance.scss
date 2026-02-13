@@ -4,6 +4,8 @@
   &::after {
     height: 46%;
 
+    overflow: visible;
+
     top: -8%;
 
     z-index: 4;
@@ -12,6 +14,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    filter: drop-shadow(3px 3px 3px rgb(0 0 0 / 75%));
+    filter: drop-shadow(0.2em 0.2em 0.2em rgb(0 0 0 / 75%));
   }
 }
