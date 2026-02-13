@@ -1,6 +1,10 @@
 @use "common";
 
 .tna-logo--adornable {
+  &::before {
+    background-color: #010101;
+  }
+
   &::after {
     background: linear-gradient(#c12029 0 33.33%, #e1a223 0 66.66%, #206031 0);
 
