@@ -18,7 +18,7 @@ These adornments can be included on any service that uses the components from TN
 
 ## JavaScript
 
-Similarly to the CSS entrypoint, there a single dynamic JavaScript file that will import the relevant script. Add this right at the bottom of your page, just before the closing `</body>` tag.
+Similar to the CSS entrypoint, there a single dynamic JavaScript file that will import the relevant script. Add this right at the bottom of your page, just before the closing `</body>` tag.
 
 ```html
 <script
