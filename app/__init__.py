@@ -11,6 +11,7 @@ from app.lib.template_filters import slugify
 from flask import Flask
 from flask_talisman import Talisman
 from jinja2 import ChoiceLoader, PackageLoader
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 
 def create_app(config_class):
@@ -108,6 +109,10 @@ def create_app(config_class):
             "screen-wake-lock": csp_none,
         },
         force_https=app.config["FORCE_HTTPS"],
+    )
+
+    app.wsgi_app = ProxyFix(
+        app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
     )
 
     @app.after_request
