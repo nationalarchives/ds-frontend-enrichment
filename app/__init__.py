@@ -112,7 +112,11 @@ def create_app(config_class):
     )
 
     app.wsgi_app = ProxyFix(
-        app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+        app.wsgi_app,
+        x_for=app.config.get("REVERSE_PROXY_LEVELS", 1),
+        x_proto=app.config.get("REVERSE_PROXY_LEVELS", 1),
+        x_host=app.config.get("REVERSE_PROXY_LEVELS", 1),
+        x_prefix=app.config.get("REVERSE_PROXY_LEVELS", 1),
     )
 
     @app.after_request

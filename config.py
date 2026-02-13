@@ -32,6 +32,8 @@ class Production(Features):
 
     SECRET_KEY: str = os.environ.get("SECRET_KEY", "")
 
+    REVERSE_PROXY_LEVELS = int(os.getenv("REVERSE_PROXY_LEVELS", "2"))
+
     DEBUG: bool = False
 
     SENTRY_DSN: str = os.getenv("SENTRY_DSN", "")

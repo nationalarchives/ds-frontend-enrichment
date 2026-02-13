@@ -13,6 +13,7 @@ services:
       - COOKIE_DOMAIN=localhost
       - CSP_STYLE_SRC='self',fonts.googleapis.com,p.typekit.net,use.typekit.net
       - CSP_FONT_SRC='self',fonts.gstatic.com,use.typekit.net
+      - REVERSE_PROXY_LEVELS=1
     ports:
       - 65529:8080
     volumes:
