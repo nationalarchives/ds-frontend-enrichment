@@ -164,12 +164,14 @@ def create_app(config_class):
 
     from .css import bp as css_bp
     from .healthcheck import bp as healthcheck_bp
+    from .intro import bp as intro_bp
     from .js import bp as js_bp
-    from .main import bp as site_bp
+    from .main import bp as main_bp
 
-    app.register_blueprint(site_bp)
+    app.register_blueprint(intro_bp)
     app.register_blueprint(healthcheck_bp, url_prefix="/healthcheck")
     app.register_blueprint(css_bp, url_prefix="/enrichment/css")
     app.register_blueprint(js_bp, url_prefix="/enrichment/js")
+    app.register_blueprint(main_bp, url_prefix="/enrichment")
 
     return app
