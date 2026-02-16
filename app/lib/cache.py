@@ -5,5 +5,8 @@ cache = Cache()
 
 
 def cache_key_prefix():
-    """Make a key that includes GET parameters."""
-    return f"{request.full_path}{request.cookies.get('cookie_preferences_set' or '')}"
+    return request.full_path
+
+
+def cache_key_prefix_logo_adornments():
+    return f"{request.base_url}{request.args.get('date', '')}{request.args.get('debug', '')}"
