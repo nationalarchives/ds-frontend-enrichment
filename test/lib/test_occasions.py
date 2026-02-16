@@ -82,10 +82,10 @@ class MainBlueprintTestCase(unittest.TestCase):
             occasion(get_date_to_test(1, 6)),
             ("pride", "Celebrating Pride Month"),
         )
-        self.assertEqual(
-            occasion(get_date_to_test(3, 6)),
-            ("bike", "Celebrating World Bicycle Day"),
-        )
+        # self.assertEqual(
+        #     occasion(get_date_to_test(3, 6)),
+        #     ("bike", "Celebrating World Bicycle Day"),
+        # )
         self.assertEqual(
             occasion(get_date_to_test(5, 6)),
             ("environment", "Celebrating World Environment Day"),

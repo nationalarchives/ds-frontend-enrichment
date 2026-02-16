@@ -60,8 +60,8 @@ def occasion(date=None):  # noqa: max-complexity
             if day.weekday() == calendar.SATURDAY and day.month == 6
         ][1].day
 
-        if day == 3:
-            return ("bike", "Celebrating World Bicycle Day")
+        # if day == 3:
+        #     return ("bike", "Celebrating World Bicycle Day")
         if day == 5:
             return ("environment", "Celebrating World Environment Day")
         if day == second_saturday_in_june:
