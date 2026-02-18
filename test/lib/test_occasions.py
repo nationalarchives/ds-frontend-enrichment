@@ -31,7 +31,7 @@ class MainBlueprintTestCase(unittest.TestCase):
         # self.assertEqual(occasion(get_date_to_test(1, 2)), ("progress", "Celebrating Progress"))
         self.assertEqual(
             occasion(get_date_to_test(14, 2)),
-            ("heart", "Happy Valentine's Day"),
+            ("heart", "Happy Valentine’s Day"),
         )
         # self.assertEqual(occasion(get_date_to_test(28, 2)), ("progress", "Celebrating Progress"))
 

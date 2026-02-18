@@ -18,7 +18,7 @@ def occasion(date=None):  # noqa: max-complexity
 
     if month == 2:
         if day == 14:
-            return ("heart", "Happy Valentine's Day")
+            return ("heart", "Happy Valentine’s Day")
         # return ("progress", "Celebrating Progress")
 
     if month == 3:
