@@ -2,6 +2,45 @@ import calendar
 from datetime import datetime
 
 
+# World Book Day
+def first_thursday_in_march(year):
+    cal = calendar.Calendar(firstweekday=calendar.MONDAY)
+    march_calendar = cal.monthdatescalendar(year, 3)
+    first_thursday_in_march = [
+        day
+        for week in march_calendar
+        for day in week
+        if day.weekday() == calendar.THURSDAY and day.month == 3
+    ][0].day
+    return first_thursday_in_march
+
+
+# Trooping the Colour
+def second_saturday_in_june(year):
+    cal = calendar.Calendar(firstweekday=calendar.MONDAY)
+    june_calendar = cal.monthdatescalendar(year, 6)
+    second_saturday_in_june = [
+        day
+        for week in june_calendar
+        for day in week
+        if day.weekday() == calendar.SATURDAY and day.month == 6
+    ][1].day
+    return second_saturday_in_june
+
+
+# Remembrance Sunday
+def second_sunday_in_november(year):
+    cal = calendar.Calendar(firstweekday=calendar.MONDAY)
+    november_calendar = cal.monthdatescalendar(year, 11)
+    second_sunday_in_november = [
+        day
+        for week in november_calendar
+        for day in week
+        if day.weekday() == calendar.SUNDAY and day.month == 11
+    ][1].day
+    return second_sunday_in_november
+
+
 def occasion(date=None):  # noqa: max-complexity
     if not isinstance(date, datetime):
         date = datetime.now()
@@ -9,8 +48,6 @@ def occasion(date=None):  # noqa: max-complexity
     day = date.day
     month = date.month
     year = date.year
-
-    cal = calendar.Calendar(firstweekday=calendar.MONDAY)
 
     if month == 1:
         if day == 1:
@@ -22,15 +59,7 @@ def occasion(date=None):  # noqa: max-complexity
         # return ("progress", "Celebrating Progress")
 
     if month == 3:
-        march_calendar = cal.monthdatescalendar(date.year, 3)
-        first_thursday_in_march = [
-            day
-            for week in march_calendar
-            for day in week
-            if day.weekday() == calendar.THURSDAY and day.month == 3
-        ][0].day
-
-        if day == first_thursday_in_march:
+        if day == first_thursday_in_march(year):
             return ("world-book-day", "Celebrating World Book Day")
         if day == 8:
             return ("womens-day", "Celebrating International Women’s Day")
@@ -52,26 +81,18 @@ def occasion(date=None):  # noqa: max-complexity
             return ("bee", "Celebrating World Bee Day")
 
     if month == 6:
-        june_calendar = cal.monthdatescalendar(date.year, 6)
-        second_saturday_in_june = [
-            day
-            for week in june_calendar
-            for day in week
-            if day.weekday() == calendar.SATURDAY and day.month == 6
-        ][1].day
-
         # if day == 3:
         #     return ("bike", "Celebrating World Bicycle Day")
         if day == 5:
             return ("environment", "Celebrating World Environment Day")
-        if day == second_saturday_in_june:
+        if day == second_saturday_in_june(year):
             return ("trooping-colour", "Trooping the Colour")
         return ("pride", "Celebrating Pride Month")
 
     if month == 7:
         if day == 2:
             return ("ufo", "Celebrating World UFO Day")
-        if day >= 20 and day <= 25 and year == 2026:
+        if day >= 6 and day <= 12 and year == 2026:
             return ("shark", "Celebrating Shark Week")
 
     if month == 8:
@@ -92,15 +113,7 @@ def occasion(date=None):  # noqa: max-complexity
         return ("black-history", "Celebrating Black History Month")
 
     if month == 11:
-        november_calendar = cal.monthdatescalendar(date.year, 11)
-        second_sunday_in_november = [
-            day
-            for week in november_calendar
-            for day in week
-            if day.weekday() == calendar.SUNDAY and day.month == 11
-        ][1].day
-
-        if day >= 2 and (day <= max(11, second_sunday_in_november)):
+        if day >= 2 and (day <= max(11, second_sunday_in_november(year))):
             return ("remembrance", "Lest We Forget")
 
     if month == 12:

@@ -5,6 +5,11 @@ from app.lib.occasions import occasion
 
 
 def get_date_to_test(day_to_test, month_to_test):
+    """
+    Returns a datetime object for the given day and month to test.
+    If the date has already passed this year, return the date for next year.
+    """
+
     now = datetime.datetime.now()
     current_day = now.day
     current_month = now.month
@@ -37,7 +42,7 @@ class MainBlueprintTestCase(unittest.TestCase):
 
     def test_occasions_march(self):
         self.assertEqual(
-            occasion(get_date_to_test(5, 3)),
+            occasion(get_date_to_test(4, 3)),
             ("world-book-day", "Celebrating World Book Day"),
         )
         self.assertEqual(
@@ -101,11 +106,11 @@ class MainBlueprintTestCase(unittest.TestCase):
             ("ufo", "Celebrating World UFO Day"),
         )
         self.assertEqual(
-            occasion(get_date_to_test(20, 7)),
+            occasion(get_date_to_test(6, 7)),
             ("shark", "Celebrating Shark Week"),
         )
         self.assertEqual(
-            occasion(get_date_to_test(25, 7)),
+            occasion(get_date_to_test(12, 7)),
             ("shark", "Celebrating Shark Week"),
         )
 
