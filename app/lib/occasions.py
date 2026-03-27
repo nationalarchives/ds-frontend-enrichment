@@ -63,6 +63,8 @@ def occasion(date=None):  # noqa: max-complexity
             return ("world-book-day", "Celebrating World Book Day")
         if day == 8:
             return ("womens-day", "Celebrating International Women’s Day")
+        if day == 27:
+            return ("theatre", "Celebrating World Theatre Day")
         # if day == 20 and year == 2026:
         #     return ("comic-relief", "Celebrating Comic Relief")
         # if day >= 16 and day <= 20 and year == 2026:

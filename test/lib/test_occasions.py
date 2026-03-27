@@ -49,6 +49,10 @@ class MainBlueprintTestCase(unittest.TestCase):
             occasion(get_date_to_test(8, 3)),
             ("womens-day", "Celebrating International Women’s Day"),
         )
+        self.assertEqual(
+            occasion(get_date_to_test(27, 3)),
+            ("theatre", "Celebrating World Theatre Day"),
+        )
         # self.assertEqual(
         #     occasion(get_date_to_test(16, 3)),
         #     ("neurodiversity", "Neurodiversity Celebration Week"),
