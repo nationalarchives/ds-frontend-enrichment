@@ -1,4 +1,5 @@
 import logging
+import os
 
 import sentry_sdk
 from app.lib.cache import cache
@@ -7,9 +8,9 @@ from app.lib.context_processor import (
     now_iso_8601,
     static_file_exists,
 )
+from app.lib.talisman import talisman
 from app.lib.template_filters import slugify
 from flask import Flask
-from flask_talisman import Talisman
 from jinja2 import ChoiceLoader, PackageLoader
 
 # from werkzeug.middleware.proxy_fix import ProxyFix
@@ -35,7 +36,9 @@ def create_app(config_class):
 
     gunicorn_error_logger = logging.getLogger("gunicorn.error")
     app.logger.handlers.extend(gunicorn_error_logger.handlers)
-    app.logger.setLevel(gunicorn_error_logger.level or "DEBUG")
+    app.logger.setLevel(
+        gunicorn_error_logger.level or os.getenv("LOG_LEVEL", "warning").upper()
+    )
 
     cache.init_app(
         app,
@@ -47,68 +50,10 @@ def create_app(config_class):
         },
     )
 
-    csp_self = "'self'"
-    csp_none = "'none'"
-    Talisman(
+    talisman.init_app(
         app,
-        content_security_policy={
-            "default-src": csp_self,
-            "base-uri": csp_none,
-            "object-src": csp_none,
-            **(
-                {"img-src": app.config.get("CSP_IMG_SRC")}
-                if app.config.get("CSP_IMG_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"script-src": app.config.get("CSP_SCRIPT_SRC")}
-                if app.config.get("CSP_SCRIPT_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"script-src-elem": app.config.get("CSP_SCRIPT_SRC_ELEM")}
-                if app.config.get("CSP_SCRIPT_SRC_ELEM") != csp_self
-                else {}
-            ),
-            **(
-                {"style-src": app.config.get("CSP_STYLE_SRC")}
-                if app.config.get("CSP_STYLE_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"font-src": app.config.get("CSP_FONT_SRC")}
-                if app.config.get("CSP_FONT_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"connect-src": app.config.get("CSP_CONNECT_SRC")}
-                if app.config.get("CSP_CONNECT_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"media-src": app.config.get("CSP_MEDIA_SRC")}
-                if app.config.get("CSP_MEDIA_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"worker-src": app.config.get("CSP_WORKER_SRC")}
-                if app.config.get("CSP_WORKER_SRC") != csp_self
-                else {}
-            ),
-            **(
-                {"frame-src": app.config.get("CSP_FRAME_SRC")}
-                if app.config.get("CSP_FRAME_SRC") != csp_self
-                else {}
-            ),
-        },
-        # content_security_policy_nonce_in=["script-src", "style-src"],
-        feature_policy={
-            "camera": csp_none,
-            "fullscreen": app.config.get("CSP_FEATURE_FULLSCREEN") or csp_self,
-            "geolocation": csp_none,
-            "microphone": csp_none,
-            "screen-wake-lock": csp_none,
-        },
+        content_security_policy=app.config["CONTENT_SECURITY_POLICY"],
+        allow_google_content_security_policy=True,
         force_https=app.config["FORCE_HTTPS"],
     )
 
@@ -120,23 +65,9 @@ def create_app(config_class):
     #     x_prefix=app.config.get("REVERSE_PROXY_LEVELS", 1),
     # )
 
-    @app.after_request
-    def apply_extra_headers(response):
-        if "X-Permitted-Cross-Domain-Policies" not in response.headers:
-            response.headers["X-Permitted-Cross-Domain-Policies"] = "none"
-        if "Cross-Origin-Embedder-Policy" not in response.headers:
-            response.headers["Cross-Origin-Embedder-Policy"] = "unsafe-none"
-        if "Cross-Origin-Opener-Policy" not in response.headers:
-            response.headers["Cross-Origin-Opener-Policy"] = "same-origin"
-        if "Cross-Origin-Resource-Policy" not in response.headers:
-            response.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
-        if "Access-Control-Allow-Origin" not in response.headers:
-            response.headers["Access-Control-Allow-Origin"] = "*"
-        return response
-
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
-    app.jinja_loader = ChoiceLoader(
+    app.jinja_env.loader = ChoiceLoader(
         [
             PackageLoader("app"),
             PackageLoader("tna_frontend_jinja"),
@@ -168,8 +99,8 @@ def create_app(config_class):
     from .js import bp as js_bp
     from .main import bp as main_bp
 
-    app.register_blueprint(intro_bp)
     app.register_blueprint(healthcheck_bp, url_prefix="/healthcheck")
+    app.register_blueprint(intro_bp)
     app.register_blueprint(css_bp, url_prefix="/enrichment/css")
     app.register_blueprint(js_bp, url_prefix="/enrichment/js")
     app.register_blueprint(main_bp, url_prefix="/enrichment")
