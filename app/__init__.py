@@ -65,6 +65,12 @@ def create_app(config_class):
     #     x_prefix=app.config.get("REVERSE_PROXY_LEVELS", 1),
     # )
 
+    @app.after_request
+    def apply_cors_header(response):
+        if "Access-Control-Allow-Origin" not in response.headers:
+            response.headers["Access-Control-Allow-Origin"] = "*"
+        return response
+
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
     app.jinja_env.loader = ChoiceLoader(
