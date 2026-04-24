@@ -13,8 +13,6 @@ from app.lib.template_filters import slugify
 from flask import Flask
 from jinja2 import ChoiceLoader, PackageLoader
 
-# from werkzeug.middleware.proxy_fix import ProxyFix
-
 
 def create_app(config_class):
     app = Flask(__name__, static_url_path="/enrichment/static")
@@ -54,21 +52,17 @@ def create_app(config_class):
         app,
         content_security_policy=app.config["CONTENT_SECURITY_POLICY"],
         allow_google_content_security_policy=True,
+        security_headers={
+            "cross_origin_resource_policy": "cross-origin"
+        },  # TODO: Replace with extra_headers in next version of TNA Python Utilities
         force_https=app.config["FORCE_HTTPS"],
     )
 
-    # app.wsgi_app = ProxyFix(
-    #     app.wsgi_app,
-    #     x_for=app.config.get("REVERSE_PROXY_LEVELS", 1),
-    #     x_proto=app.config.get("REVERSE_PROXY_LEVELS", 1),
-    #     x_host=app.config.get("REVERSE_PROXY_LEVELS", 1),
-    #     x_prefix=app.config.get("REVERSE_PROXY_LEVELS", 1),
-    # )
-
     @app.after_request
     def apply_cors_header(response):
-        if "Access-Control-Allow-Origin" not in response.headers:
-            response.headers["Access-Control-Allow-Origin"] = "*"
+        # TODO: Replace with extra_headers in next version of TNA Python Utilities
+        response.headers["Access-Control-Allow-Origin"] = "*"
+        response.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
         return response
 
     app.jinja_env.trim_blocks = True
