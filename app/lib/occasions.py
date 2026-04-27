@@ -73,7 +73,7 @@ def occasion(date=None):  # noqa: max-complexity
     if month == 4:
         if day == 22:
             return ("earth-day", "Celebrating Earth Day")
-        if day == 27 and year == 2026:
+        if day == 25 and year == 2027:
             return ("london-marathon", "The London Marathon")
 
     if month == 5:
