@@ -72,7 +72,7 @@ class MainBlueprintTestCase(unittest.TestCase):
             ("earth-day", "Celebrating Earth Day"),
         )
         self.assertEqual(
-            occasion(get_date_to_test(27, 4)),
+            occasion(get_date_to_test(25, 4)),
             ("london-marathon", "The London Marathon"),
         )
 
