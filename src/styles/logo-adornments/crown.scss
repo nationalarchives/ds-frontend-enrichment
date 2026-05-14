@@ -1,0 +1,15 @@
+@use "common";
+
+.tna-logo--adornable {
+  &::after {
+    width: auto;
+    aspect-ratio: 1;
+
+    top: 3%;
+    right: 8.625%;
+
+    background-color: #fff;
+
+    clip-path: url("../images/logo-adornments/crown.svg#crown");
+  }
+}

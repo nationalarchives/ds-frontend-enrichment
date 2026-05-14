@@ -88,7 +88,7 @@ def occasion(date=None):  # noqa: max-complexity
         if day == 5:
             return ("environment", "Celebrating World Environment Day")
         if day == second_saturday_in_june(year):
-            return ("trooping-colour", "Trooping the Colour")
+            return ("crown", "Trooping the Colour")
         return ("pride", "Celebrating Pride Month")
 
     if month == 7:
