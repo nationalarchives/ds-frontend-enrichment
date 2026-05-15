@@ -1,9 +1,10 @@
 from datetime import datetime
 
+from flask import make_response, render_template, request
+
 from app.css import bp
 from app.lib.cache import cache, cache_key_prefix_logo_adornments
 from app.lib.occasions import occasion
-from flask import make_response, render_template, request
 
 
 @bp.route("/logo-adornments.css")

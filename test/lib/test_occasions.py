@@ -18,10 +18,8 @@ def get_date_to_test(day_to_test, month_to_test):
     if month_to_test < current_month or (
         month_to_test == current_month and day_to_test < current_day
     ):
-        print(f"Testing date: {day_to_test}/{month_to_test}, using next year")
         return datetime.datetime(current_year + 1, month_to_test, day_to_test)
 
-    print(f"Testing date: {day_to_test}/{month_to_test}, using current year")
     return datetime.datetime(current_year, month_to_test, day_to_test)
 
 

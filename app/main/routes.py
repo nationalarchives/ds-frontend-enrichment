@@ -1,13 +1,12 @@
 import datetime
 from calendar import monthrange
 
-from app.lib.cache import cache, cache_key_prefix
 from app.lib.occasions import occasion
 from app.main import bp
 
 
 @bp.route("/occasions.json")
-@cache.cached(key_prefix=cache_key_prefix)
+# @cache.cached(key_prefix=cache_key_prefix)
 def occasions_json():
     occasions_list = []
     year = datetime.datetime.now().year

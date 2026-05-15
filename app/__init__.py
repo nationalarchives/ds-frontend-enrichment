@@ -2,6 +2,9 @@ import logging
 import os
 
 import sentry_sdk
+from flask import Flask
+from jinja2 import ChoiceLoader, PackageLoader
+
 from app.lib.cache import cache
 from app.lib.context_processor import (
     cookie_preference,
@@ -10,8 +13,6 @@ from app.lib.context_processor import (
 )
 from app.lib.talisman import talisman
 from app.lib.template_filters import slugify
-from flask import Flask
-from jinja2 import ChoiceLoader, PackageLoader
 
 
 def create_app(config_class):
@@ -52,18 +53,12 @@ def create_app(config_class):
         app,
         content_security_policy=app.config["CONTENT_SECURITY_POLICY"],
         allow_google_content_security_policy=True,
-        security_headers={
-            "cross_origin_resource_policy": "cross-origin"
-        },  # TODO: Replace with extra_headers in next version of TNA Python Utilities
+        extra_headers={
+            "Access-Control-Allow-Origin": "*",
+            "Cross-Origin-Resource-Policy": "cross-origin",
+        },
         force_https=app.config["FORCE_HTTPS"],
     )
-
-    @app.after_request
-    def apply_cors_header(response):
-        # TODO: Replace with extra_headers in next version of TNA Python Utilities
-        response.headers["Access-Control-Allow-Origin"] = "*"
-        response.headers["Cross-Origin-Resource-Policy"] = "cross-origin"
-        return response
 
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True

@@ -8,15 +8,14 @@ from flask import current_app, request
 
 def now_iso_8601():
     now = datetime.now()
-    now_date = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-    return now_date
+    return now.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def cookie_preference(policy):
     if "cookies_policy" in request.cookies:
         cookies_policy = request.cookies["cookies_policy"]
         preferences = json.loads(unquote(cookies_policy))
-        return preferences[policy] if policy in preferences else None
+        return preferences.get(policy, None)
     return None
 
 
