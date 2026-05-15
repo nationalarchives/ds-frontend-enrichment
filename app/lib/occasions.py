@@ -6,42 +6,39 @@ from datetime import datetime
 def first_thursday_in_march(year):
     cal = calendar.Calendar(firstweekday=calendar.MONDAY)
     march_calendar = cal.monthdatescalendar(year, 3)
-    first_thursday_in_march = [
+    return next(
         day
         for week in march_calendar
         for day in week
         if day.weekday() == calendar.THURSDAY and day.month == 3
-    ][0].day
-    return first_thursday_in_march
+    ).day
 
 
 # Trooping the Colour
 def second_saturday_in_june(year):
     cal = calendar.Calendar(firstweekday=calendar.MONDAY)
     june_calendar = cal.monthdatescalendar(year, 6)
-    second_saturday_in_june = [
+    return [
         day
         for week in june_calendar
         for day in week
         if day.weekday() == calendar.SATURDAY and day.month == 6
     ][1].day
-    return second_saturday_in_june
 
 
 # Remembrance Sunday
 def second_sunday_in_november(year):
     cal = calendar.Calendar(firstweekday=calendar.MONDAY)
     november_calendar = cal.monthdatescalendar(year, 11)
-    second_sunday_in_november = [
+    return [
         day
         for week in november_calendar
         for day in week
         if day.weekday() == calendar.SUNDAY and day.month == 11
     ][1].day
-    return second_sunday_in_november
 
 
-def occasion(date=None):  # noqa: max-complexity
+def occasion(date=None):  # noqa: C901
     if not isinstance(date, datetime):
         date = datetime.now()
 
@@ -49,13 +46,11 @@ def occasion(date=None):  # noqa: max-complexity
     month = date.month
     year = date.year
 
-    if month == 1:
-        if day == 1:
-            return ("fireworks", "Happy New Year")
+    if month == 1 and day == 1:
+        return ("fireworks", "Happy New Year")
 
-    if month == 2:
-        if day == 14:
-            return ("heart", "Happy Valentine’s Day")
+    if month == 2 and day == 14:
+        return ("heart", "Happy Valentine’s Day")
         # return ("progress", "Celebrating Progress")
 
     if month == 3:
@@ -97,13 +92,11 @@ def occasion(date=None):  # noqa: max-complexity
         if day >= 6 and day <= 12 and year == 2026:
             return ("shark", "Celebrating Shark Week")
 
-    if month == 8:
-        if day == 19:
-            return ("photography", "Celebrating World Photography Day")
+    if month == 8 and day == 19:
+        return ("photography", "Celebrating World Photography Day")
 
-    if month == 9:
-        if day == 29:
-            return ("heart", "Celebrating World Heart Day")
+    if month == 9 and day == 29:
+        return ("heart", "Celebrating World Heart Day")
 
     if month == 10:
         # if day == 3:
@@ -118,8 +111,7 @@ def occasion(date=None):  # noqa: max-complexity
         if day >= 2 and (day <= max(11, second_sunday_in_november(year))):
             return ("remembrance", "Lest We Forget")
 
-    if month == 12:
-        if day <= 25:
-            return ("christmas", "Merry Christmas")
+    if month == 12 and day <= 25:
+        return ("christmas", "Merry Christmas")
 
     return ("", "")
