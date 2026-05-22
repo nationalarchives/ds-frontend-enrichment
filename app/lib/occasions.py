@@ -2,40 +2,15 @@ import calendar
 from datetime import datetime
 
 
-# World Book Day
-def first_thursday_in_march(year):
+def nth_day_in_month(year, month, weekday, nth):
     cal = calendar.Calendar(firstweekday=calendar.MONDAY)
-    march_calendar = cal.monthdatescalendar(year, 3)
-    return next(
-        day
-        for week in march_calendar
-        for day in week
-        if day.weekday() == calendar.THURSDAY and day.month == 3
-    ).day
-
-
-# Trooping the Colour
-def second_saturday_in_june(year):
-    cal = calendar.Calendar(firstweekday=calendar.MONDAY)
-    june_calendar = cal.monthdatescalendar(year, 6)
+    month_calendar = cal.monthdatescalendar(year, month)
     return [
         day
-        for week in june_calendar
+        for week in month_calendar
         for day in week
-        if day.weekday() == calendar.SATURDAY and day.month == 6
-    ][1].day
-
-
-# Remembrance Sunday
-def second_sunday_in_november(year):
-    cal = calendar.Calendar(firstweekday=calendar.MONDAY)
-    november_calendar = cal.monthdatescalendar(year, 11)
-    return [
-        day
-        for week in november_calendar
-        for day in week
-        if day.weekday() == calendar.SUNDAY and day.month == 11
-    ][1].day
+        if day.weekday() == weekday and day.month == month
+    ][nth - 1].day
 
 
 def occasion(date=None):  # noqa: C901
@@ -54,10 +29,14 @@ def occasion(date=None):  # noqa: C901
         # return ("progress", "Celebrating Progress")
 
     if month == 3:
-        if day == first_thursday_in_march(year):
+        if day == 1:
+            return ("wales", "Celebrating St David’s Day")
+        if day == nth_day_in_month(year, month, calendar.THURSDAY, 1):
             return ("world-book-day", "Celebrating World Book Day")
         if day == 8:
             return ("womens-day", "Celebrating International Women’s Day")
+        if day == 17:
+            return ("union-flag", "Celebrating St Patrick’s Day")
         if day == 27:
             return ("theatre", "Celebrating World Theatre Day")
         # if day == 20 and year == 2026:
@@ -68,6 +47,8 @@ def occasion(date=None):  # noqa: C901
     if month == 4:
         if day == 22:
             return ("earth-day", "Celebrating Earth Day")
+        if day == 23:
+            return ("england", "Celebrating St George’s Day")
         if day == 25 and year == 2027:
             return ("london-marathon", "The London Marathon")
 
@@ -82,7 +63,7 @@ def occasion(date=None):  # noqa: C901
         #     return ("bike", "Celebrating World Bicycle Day")
         if day == 5:
             return ("environment", "Celebrating World Environment Day")
-        if day == second_saturday_in_june(year):
+        if day == nth_day_in_month(year, month, calendar.SATURDAY, 2):
             return ("crown", "Trooping the Colour")
         return ("pride", "Celebrating Pride Month")
 
@@ -108,8 +89,14 @@ def occasion(date=None):  # noqa: C901
         return ("black-history", "Celebrating Black History Month")
 
     if month == 11:
-        if day >= 2 and (day <= max(11, second_sunday_in_november(year))):
+        if day >= 2 and (
+            day <= max(11, nth_day_in_month(year, month, calendar.SUNDAY, 2))
+        ):
             return ("remembrance", "Lest We Forget")
+        if day == 14:
+            return ("union-flag", "Celebrating the birthday of His Majesty The King")
+        if day == 30:
+            return ("scotland", "Celebrating St Andrew’s Day")
 
     if month == 12 and day <= 25:
         return ("christmas", "Merry Christmas")
