@@ -1,0 +1,11 @@
+@use "common";
+
+.tna-logo--adornable {
+  &::after {
+    background-image: url("../images/logo-adornments/scotland-flag.svg");
+    background-size: 100% 100%;
+    background-position: center;
+
+    background-repeat: no-repeat;
+  }
+}
