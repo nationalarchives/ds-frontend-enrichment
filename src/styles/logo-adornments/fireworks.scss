@@ -6,9 +6,9 @@
   0% {
     width: var(--firework-initial-size);
 
-    transform: translate(var(--firework-x), var(--firework-initial-y));
-
     opacity: 1;
+
+    transform: translate(var(--firework-x), var(--firework-initial-y));
   }
 
   50% {
@@ -245,6 +245,7 @@
 
     transform: translate(-50%, var(--firework-y));
     transform-origin: center bottom;
+
     animation: firework 2s infinite;
 
     @include media.on-small {
@@ -288,8 +289,9 @@
       --firework-colour6: lavender;
       --firework-final-size: 4rem;
       left: 20%;
-      animation-delay: -0.25s;
+
       animation-duration: 1.9s;
+      animation-delay: -0.25s;
     }
   }
 
@@ -307,13 +309,15 @@
       --firework-colour6: lavender;
       --firework-final-size: 3.5rem;
       left: 73%;
-      animation-delay: -0.6s;
+
       animation-duration: 1.7s;
+      animation-delay: -0.6s;
     }
   }
 
   @media (prefers-reduced-motion) {
     display: none;
+
     animation: none;
   }
 }

@@ -13,7 +13,6 @@ const dynamicEntries = glob
 
 module.exports = {
   entry: {
-    main: "./src/scripts/main.js",
     analytics: "./src/scripts/analytics.js",
     ...dynamicEntries,
   },
