@@ -66,7 +66,7 @@ def occasion(date=None):  # noqa: C901
         if day == 5:
             return ("environment", "Celebrating World Environment Day")
         if day == 8:
-            return ("oceans", "Celebrating Oceans Day")
+            return ("oceans", "Celebrating World Oceans Day")
         return ("pride", "Celebrating Pride Month")
 
     if month == 7:
