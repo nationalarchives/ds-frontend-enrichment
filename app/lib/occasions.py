@@ -59,12 +59,14 @@ def occasion(date=None):  # noqa: C901
             return ("bee", "Celebrating World Bee Day")
 
     if month == 6:
+        if day == nth_day_in_month(year, month, calendar.SATURDAY, 2):
+            return ("crown", "Trooping the Colour")
         # if day == 3:
         #     return ("bike", "Celebrating World Bicycle Day")
         if day == 5:
             return ("environment", "Celebrating World Environment Day")
-        if day == nth_day_in_month(year, month, calendar.SATURDAY, 2):
-            return ("crown", "Trooping the Colour")
+        if day == 8:
+            return ("oceans", "Celebrating Oceans Day")
         return ("pride", "Celebrating Pride Month")
 
     if month == 7:
