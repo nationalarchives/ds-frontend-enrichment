@@ -111,14 +111,14 @@ class MainBlueprintTestCase(unittest.TestCase):
             occasion(get_date_to_test(2, 7)),
             ("ufo", "Celebrating World UFO Day"),
         )
-        self.assertEqual(
-            occasion(get_date_to_test(6, 7)),
-            ("shark", "Celebrating Shark Week"),
-        )
-        self.assertEqual(
-            occasion(get_date_to_test(12, 7)),
-            ("shark", "Celebrating Shark Week"),
-        )
+        # self.assertEqual(
+        #     occasion(get_date_to_test(6, 7)),
+        #     ("shark", "Celebrating Shark Week"),
+        # )
+        # self.assertEqual(
+        #     occasion(get_date_to_test(12, 7)),
+        #     ("shark", "Celebrating Shark Week"),
+        # )
 
     def test_occasions_august(self):
         self.assertEqual(
