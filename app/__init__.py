@@ -5,7 +5,6 @@ import sentry_sdk
 from flask import Flask
 from jinja2 import ChoiceLoader, PackageLoader
 
-from app.lib.cache import cache
 from app.lib.context_processor import (
     cookie_preference,
     now_iso_8601,
@@ -37,16 +36,6 @@ def create_app(config_class):
     app.logger.handlers.extend(gunicorn_error_logger.handlers)
     app.logger.setLevel(
         gunicorn_error_logger.level or os.getenv("LOG_LEVEL", "warning").upper()
-    )
-
-    cache.init_app(
-        app,
-        config={
-            "CACHE_TYPE": app.config.get("CACHE_TYPE"),
-            "CACHE_DEFAULT_TIMEOUT": app.config.get("CACHE_DEFAULT_TIMEOUT"),
-            "CACHE_IGNORE_ERRORS": app.config.get("CACHE_IGNORE_ERRORS"),
-            "CACHE_DIR": app.config.get("CACHE_DIR"),
-        },
     )
 
     talisman.init_app(

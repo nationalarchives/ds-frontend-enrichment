@@ -1,14 +1,14 @@
 from datetime import datetime
 
 from flask import make_response, render_template, request
+from tna_utilities.flask import cacheable_duration_cloudfront
 
 from app.css import bp
-from app.lib.cache import cache, cache_key_prefix_logo_adornments
 from app.lib.occasions import occasion
 
 
 @bp.route("/logo-adornments.css")
-@cache.cached(key_prefix=cache_key_prefix_logo_adornments)
+@cacheable_duration_cloudfront(21600, 3600)
 def logo_adornments_css():
     date = request.args.get("debug", None)
     if date:

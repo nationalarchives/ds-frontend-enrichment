@@ -59,11 +59,6 @@ class Production(Features):
     }
     FORCE_HTTPS: bool = strtobool(os.getenv("FORCE_HTTPS", "False"))
 
-    CACHE_TYPE: str = "FileSystemCache"
-    CACHE_DEFAULT_TIMEOUT: int = int(os.environ.get("CACHE_DEFAULT_TIMEOUT", "3600"))
-    CACHE_IGNORE_ERRORS: bool = True
-    CACHE_DIR: str = os.environ.get("CACHE_DIR", "/tmp")
-
     GA4_ID = os.environ.get("GA4_ID", "")
 
 
@@ -92,8 +87,5 @@ class Test(Production):
 
     SENTRY_DSN = ""
     SENTRY_SAMPLE_RATE = 0
-
-    CACHE_TYPE = "SimpleCache"
-    CACHE_DEFAULT_TIMEOUT = 1
 
     FORCE_HTTPS = False
