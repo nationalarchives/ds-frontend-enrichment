@@ -1,12 +1,14 @@
 import datetime
 from calendar import monthrange
 
+from tna_utilities.flask import cacheable_duration
+
 from app.lib.occasions import occasion
 from app.main import bp
 
 
 @bp.route("/occasions.json")
-# @cache.cached(key_prefix=cache_key_prefix)
+@cacheable_duration(86400)
 def occasions_json():
     occasions_list = []
     year = datetime.datetime.now().year
