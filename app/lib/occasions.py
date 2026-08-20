@@ -74,6 +74,8 @@ def occasion(date=None):  # noqa: C901
             return ("ufo", "Celebrating World UFO Day")
         if day >= 6 and day <= 12 and year == 2026:
             return ("shark", "Celebrating Shark Week")
+        if day == 17:
+            return ("emoji", "Celebrating World Emoji Day")
 
     if month == 8 and day == 19:
         return ("photography", "Celebrating World Photography Day")
