@@ -1,5 +1,5 @@
-import datetime
 from calendar import monthrange
+from datetime import UTC, datetime
 
 from tna_utilities.flask import cacheable_duration
 
@@ -11,10 +11,10 @@ from app.main import bp
 @cacheable_duration(86400)
 def occasions_json():
     occasions_list = []
-    year = datetime.datetime.now().year
+    year = datetime.now(UTC).year
     for month in range(1, 13):
         for day in range(monthrange(year, month)[1]):
-            date = datetime.datetime(year, month, day + 1)
+            date = datetime(year, month, day + 1, tzinfo=UTC)
             logo_adornment, logo_adornment_description = occasion(date)
             if logo_adornment and logo_adornment_description:
                 occasions_list.append(

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import UTC, datetime
 
 from flask import make_response, render_template, request
 from tna_utilities.flask import cacheable_duration_cloudfront
@@ -12,7 +12,7 @@ from app.lib.occasions import occasion
 def logo_adornments_css():
     date = request.args.get("debug", None)
     if date:
-        date = datetime.strptime(date, "%Y-%m-%d")
+        date = datetime.strptime(date, "%Y-%m-%d").astimezone(UTC)
     logo_adornment, logo_adornment_description = occasion(date)
     css = render_template(
         "css/logo-adornments.css.jinja",
