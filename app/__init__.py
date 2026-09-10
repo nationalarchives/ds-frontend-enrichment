@@ -62,11 +62,11 @@ def create_app(config_class):
 
     @app.context_processor
     def context_processor():
-        return dict(
-            cookie_preference=cookie_preference,
-            now_iso_8601=now_iso_8601,
-            static_file_exists=static_file_exists,
-            app_config={
+        return {
+            "cookie_preference": cookie_preference,
+            "now_iso_8601": now_iso_8601,
+            "static_file_exists": static_file_exists,
+            "app_config": {
                 "ENVIRONMENT": app.config.get("ENVIRONMENT"),
                 "CONTAINER_IMAGE": app.config.get("CONTAINER_IMAGE"),
                 "BUILD_VERSION": app.config.get("BUILD_VERSION"),
@@ -74,8 +74,8 @@ def create_app(config_class):
                 "COOKIE_DOMAIN": app.config.get("COOKIE_DOMAIN"),
                 "GA4_ID": app.config.get("GA4_ID"),
             },
-            feature={},
-        )
+            "feature": {},
+        }
 
     from .css import bp as css_bp
     from .healthcheck import bp as healthcheck_bp

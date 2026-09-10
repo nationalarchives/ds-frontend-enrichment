@@ -1,5 +1,5 @@
-import datetime
 import unittest
+from datetime import UTC, datetime
 
 from app.lib.occasions import occasion
 
@@ -10,7 +10,7 @@ def get_date_to_test(day_to_test, month_to_test):
     If the date has already passed this year, return the date for next year.
     """
 
-    now = datetime.datetime.now()
+    now = datetime.now(UTC)
     current_day = now.day
     current_month = now.month
     current_year = now.year
@@ -18,9 +18,9 @@ def get_date_to_test(day_to_test, month_to_test):
     if month_to_test < current_month or (
         month_to_test == current_month and day_to_test < current_day
     ):
-        return datetime.datetime(current_year + 1, month_to_test, day_to_test)
+        return datetime(current_year + 1, month_to_test, day_to_test, tzinfo=UTC)
 
-    return datetime.datetime(current_year, month_to_test, day_to_test)
+    return datetime(current_year, month_to_test, day_to_test, tzinfo=UTC)
 
 
 class MainBlueprintTestCase(unittest.TestCase):

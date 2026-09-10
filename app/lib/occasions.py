@@ -1,5 +1,5 @@
 import calendar
-from datetime import datetime
+from datetime import UTC, datetime
 
 
 def nth_day_in_month(year, month, weekday, nth):
@@ -15,7 +15,7 @@ def nth_day_in_month(year, month, weekday, nth):
 
 def occasion(date=None):  # noqa: C901
     if not isinstance(date, datetime):
-        date = datetime.now()
+        date = datetime.now(UTC)
 
     day = date.day
     month = date.month
