@@ -29,7 +29,3 @@ build-backend = "poetry.core.masonry.api"
 testpaths = [
     "test",
 ]
-
-[solver]
-min-release-age = 7
-min-release-age-exclude = "tna-frontend-jinja,tna-utilities,tna-ruff-config"
